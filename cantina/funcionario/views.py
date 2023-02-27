@@ -52,16 +52,5 @@ class DetalhesPedido(LoginRequiredMixin, UserPassesTestMixin, View):
         
         return render(request,'funcionario/detalhes-pedido.html',context)
         
-    def post(self,request,pk,*args,**kwargs):
-        pedido = ModeloPedido.objects.get(pk=pk)
-        pedido.pago = True
-        pedido.save()
-        
-        context = {
-            'pedido': pedido
-        }
-        
-        return render(request,'funcionario/detalhes-pedido.html',context)
-        
     def test_func(self):
         return self.request.user.groups.filter(name='Funcionário').exists()
