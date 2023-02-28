@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.utils.timezone import datetime
 from cliente.models import ModeloPedido
+from django.core.paginator import Paginator
 
 class Dashboard(LoginRequiredMixin, UserPassesTestMixin, View):
     def get(self, request, *args, **kwargs):
@@ -49,7 +50,7 @@ class DetalhesPedido(LoginRequiredMixin, UserPassesTestMixin, View):
         context = {
             'pedido': pedido
         }
-        
+
         return render(request,'funcionario/detalhes-pedido.html',context)
         
     def test_func(self):

@@ -113,6 +113,7 @@ class ConfirmarPedido(View):
         
 class ConfirmarPagamento(View):
     def get(self, request, *args, **kwargs):
+        messages.add_message(request, SUCCESS, 'Pagamento Efetuado!')
         return render(request, 'cliente/confirmacao_pagamento.html')
         
 class Menu(View):
